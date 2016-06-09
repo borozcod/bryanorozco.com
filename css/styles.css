@@ -1,64 +1,195 @@
 
-body{background-color: #fff; color:#000; font-family: 'Lato', sans-serif; margin: 0;}
-div{margin: 0 auto; display: block;}
+@font-face {
+    font-family: "Antonio-Regular";
+    src: url(bryanorozco.com/fonts/Antonio-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Antonio-Light";
+    src: url(bryanorozco.com/fonts/Antonio-Light.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Antonio-Bold";
+    src: url(bryanorozco.com/fonts/Antonio-Bold.ttf.ttf) format("truetype");
+}
 
-.s-header{text-align: center;}
-.profile-img{max-width:300px;}
-.profile-img > img {width: 300px; border-radius: 50%; border: 10px solid #000;}
+body{
+    background-color: #247BA0; 
+    color:#000; 
+    font-family: 'Antonio-Light', 'Lato', 
+    sans-serif; 
+    margin: 0;
+}
 
-
-
-/*Sidebar*/
-.sidebar{position: fixed; left: 0; width: 20px; background-color:#000; height:100%;}
-
-.fa {
-    width: 60px;
+div{
+    margin: 0 auto; 
     display: block;
-    text-align: center;
-    line-height:60px;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-}
-.fa-arrow-down{
-
 }
 
-.bounce {
+.intro{
+    height: 500px;
+    background: url('http://bryanorozco.com/images/gdl-panorama.jpg') no-repeat;
+}
+
+.logo{
+    width: 200px;
     position: absolute;
-    bottom: 15px;
-    left: 50% ;
-    width: 60px;
-    height: 60px ;
-    margin-left:-30px;
-    -webkit-border-radius:50%;
-    -moz-border-radius:50%;
-    -ms-border-radius:50%;
-    border-radius:50%;
-    animation: bounce 2s infinite;
-    -webkit-animation: bounce 2s infinite;
-    -moz-animation: bounce 2s infinite;
-    -o-animation: bounce 2s infinite;
+    left: 50%;
+    top: 200px;
+    text-align: center;
+    color: #fff;
+    margin-left: -100px;
 }
 
-@-webkit-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
-    40% {-webkit-transform: translateY(-30px);}
-    60% {-webkit-transform: translateY(-15px);}
+.fa-heart{
+    color: #E5144C;
 }
 
-@-moz-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
-    40% {-moz-transform: translateY(-30px);}
-    60% {-moz-transform: translateY(-15px);}
+
+/*Menu*/
+.menu-container {
+    position: fixed;
+    top:0;
+    background-color: #E5144C;
+    height: 100%;
+    width: 100%;
+    display: none;
+    
 }
 
-@-o-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
-    40% {-o-transform: translateY(-30px);}
-    60% {-o-transform: translateY(-15px);}
+.menu {
+    display: table;
+    text-align: center;
+    margin: 60px auto;
+    padding: 0;
+    position: relative;
 }
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-30px);}
-    60% {transform: translateY(-15px);}
+
+.menu li {
+    list-style: none;
+    position: relative;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: #fff; 
+    font-size: 40px; 
+    width: 200px;
+    display: block;  
+    position: relative;
+    text-transform: uppercase;
+}
+
+.menu li a::after{
+    content: "";
+    background-color: #000;
+    width: 0;
+    height: 3px;
+    display: block;
+    bottom: 31px;
+    right: 0;
+    left: 0;
+    position: relative;
+    transition: width 0.3s;
+}
+.menu li a:hover::after{
+    width: 100%;
+}
+
+/*Menu Button*/
+.c-hamburger {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    margin: 0;
+    right: 20px;
+    border-radius: 4px;
+    top: 20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    text-indent: -9999px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.c-hamburger:focus {
+  outline: none;
+}
+
+.c-hamburger span {
+    display: block;
+    position: absolute;
+    top: 23px;
+    left: 10px;
+    right: 10px;    
+    height: 4px;
+    background: #fff;
+}
+.c-hamburger span::before,
+.c-hamburger span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  content: "";
+}
+.c-hamburger span::before {
+  top: -10px;
+}
+.c-hamburger span::after {
+  bottom: -10px;
+}
+
+.c-hamburger--htx {
+  background-color: #000;
+}
+
+.c-hamburger--htx span {
+  transition: background 0s 0.3s;
+}
+
+.c-hamburger--htx span::before,
+.c-hamburger--htx span::after {
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0.3s, 0s;
+}
+
+.c-hamburger--htx span::before {
+  transition-property: top, transform;
+}
+
+.c-hamburger--htx span::after {
+  transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+.c-hamburger--htx.is-active {
+  background-color: #000;
+}
+
+.c-hamburger--htx.is-active span {
+  background: none;
+}
+
+.c-hamburger--htx.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.c-hamburger--htx.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.c-hamburger--htx.is-active span::before,
+.c-hamburger--htx.is-active span::after {
+  transition-delay: 0s, 0.3s;
 }
