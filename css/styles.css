@@ -1,33 +1,42 @@
 
 @font-face {
     font-family: "Antonio-Regular";
-    src: url(bryanorozco.com/fonts/Antonio-Regular.ttf) format("truetype");
+    src: url(http://bryanorozco.com/fonts/Antonio-Regular.ttf) format("truetype");
 }
 @font-face {
     font-family: "Antonio-Light";
-    src: url(bryanorozco.com/fonts/Antonio-Light.ttf) format("truetype");
+    src: url(http://bryanorozco.com/fonts/Antonio-Light.ttf) format("truetype");
 }
 @font-face {
     font-family: "Antonio-Bold";
-    src: url(bryanorozco.com/fonts/Antonio-Bold.ttf.ttf) format("truetype");
+    src: url(http://bryanorozco.com/fonts/Antonio-Bold.ttf.ttf) format("truetype");
 }
-
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #ffb7b7; /* Gecko Browsers */
+}
+p, h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
 body{
-    background-color: #247BA0; 
-    color:#000; 
-    font-family: 'Antonio-Light', 'Lato', 
-    sans-serif; 
+    background-color: #fff;
+    color:#000;
+    font-family: 'Antonio-Light', 'Lato',
+    sans-serif;
     margin: 0;
 }
 
 div{
-    margin: 0 auto; 
+    margin: 0 auto;
     display: block;
 }
 
+/*Intro Section*/
 .intro{
     height: 500px;
-    background: url('http://bryanorozco.com/images/gdl-panorama.jpg') no-repeat;
+
 }
 
 .logo{
@@ -44,7 +53,54 @@ div{
     color: #E5144C;
 }
 
+/*About Me Section*/
+section.about-me{
+    padding: 100px 50px;
+    background-color: #fff;
+    text-align: center;
+}
 
+.profile-img{
+  width: 49%;
+  display: inline-block;
+}
+.profile-content{
+  width: 50%;
+  text-align: left;
+  display: inline-block;
+}
+
+.profile-content h1{
+  font-size: 50px;
+}
+
+.profile-img img{
+  border: solid 4px #000;
+}
+.countries{
+  width: 100%;
+}
+
+.mex, .usa{
+  width: 49%;
+  display: inline-block;
+  position: relative;
+}
+.mex-overlay, .usa-overlay{
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #FFF;
+}
+.mex-overlay{
+  background: rgba(229, 20, 76, .6);
+}
+.usa-overlay{
+  background: rgba(36, 123, 160, .6);
+}
 /*Menu*/
 .menu-container {
     position: fixed;
@@ -53,7 +109,7 @@ div{
     height: 100%;
     width: 100%;
     display: none;
-    
+
 }
 
 .menu {
@@ -71,10 +127,10 @@ div{
 
 .menu li a{
     text-decoration: none;
-    color: #fff; 
-    font-size: 40px; 
+    color: #fff;
+    font-size: 40px;
     width: 200px;
-    display: block;  
+    display: block;
     position: relative;
     text-transform: uppercase;
 }
@@ -99,7 +155,7 @@ div{
 .c-hamburger {
     z-index: 2;
     display: block;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     margin: 0;
     right: 20px;
@@ -127,7 +183,7 @@ div{
     position: absolute;
     top: 23px;
     left: 10px;
-    right: 10px;    
+    right: 10px;
     height: 4px;
     background: #fff;
 }
