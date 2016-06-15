@@ -14,9 +14,11 @@
 ::selection {
   background: #ffb7b7; /* WebKit/Blink Browsers */
 }
+
 ::-moz-selection {
   background: #ffb7b7; /* Gecko Browsers */
 }
+
 p, h1, h2, h3, h4, h5, h6{
     margin: 0;
 }
@@ -31,6 +33,11 @@ body{
 div{
     margin: 0 auto;
     display: block;
+}
+
+section{
+  max-width: 1366px;
+  margin: 0 auto;
 }
 
 /*Intro Section*/
@@ -52,21 +59,52 @@ div{
 .fa-heart{
     color: #E5144C;
 }
+/*Quote Section*/
+.fa-quote-left{
+  font-size: 150px!important;
+  width: 15%;
+  vertical-align: top;
+  display: inline-block!important;
+}
+.quote-text, .quote-text-trans{
+  font-size: 50px;
+  width: 80%;
+  display: inline-block;
+}
+.quote-text #text{
+  min-height: 140px;
+}
+.quote-text-trans{
+  display: none;
+}
+.quote-author{
+  float: right;
+}
+/*Quote Section*/
+section.quote{
+  overflow-wrap: break-word;
+  background-color: #fff;
+}
+
+section.about-me{
+  background-color: #000;
+  color: #fff;
+}
 
 /*About Me Section*/
-section.about-me{
+section.about-me, section.quote{
     padding: 100px 50px;
-    background-color: #fff;
-    text-align: center;
+
 }
 
 .profile-img{
-  width: 49%;
+  text-align: center;
+  width: 100%;
   display: inline-block;
 }
 .profile-content{
-  width: 50%;
-  text-align: left;
+  width: 100%;
+  text-align: center;;
   display: inline-block;
 }
 
@@ -75,16 +113,20 @@ section.about-me{
 }
 
 .profile-img img{
-  border: solid 4px #000;
+  border: solid 4px #fff;
+  border-radius: 50%;
 }
 .countries{
   width: 100%;
 }
 
 .mex, .usa{
-  width: 49%;
+  width: 50%;
   display: inline-block;
   position: relative;
+}
+.mex img, .usa img{
+  width: 100%;
 }
 .mex-overlay, .usa-overlay{
   position: absolute;
@@ -101,15 +143,16 @@ section.about-me{
 .usa-overlay{
   background: rgba(36, 123, 160, .6);
 }
+
 /*Menu*/
 .menu-container {
     position: fixed;
-    top:0;
-    background-color: #E5144C;
-    height: 100%;
-    width: 100%;
+    top:20px;
+    right:20px;
+    background-color: #000;
+    height: 300px;
+    width: 225px;
     display: none;
-
 }
 
 .menu {
@@ -128,20 +171,20 @@ section.about-me{
 .menu li a{
     text-decoration: none;
     color: #fff;
-    font-size: 40px;
-    width: 200px;
+    font-size: 30px;
     display: block;
+    width: 140px;
     position: relative;
     text-transform: uppercase;
 }
 
 .menu li a::after{
     content: "";
-    background-color: #000;
+    background-color: #fff;
     width: 0;
     height: 3px;
     display: block;
-    bottom: 31px;
+    bottom: 24px;
     right: 0;
     left: 0;
     position: relative;
@@ -159,7 +202,6 @@ section.about-me{
     overflow: hidden;
     margin: 0;
     right: 20px;
-    border-radius: 4px;
     top: 20px;
     padding: 0;
     width: 50px;
