@@ -7,14 +7,16 @@
   <title>Bryan Orozco</title>
   <meta name="description" content="Bryan Orozco">
   <meta name="author" content="Bryan Orozco">
-
+  <meta name="viewport" content="maximum-scale=1">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="./js/parallax.js"></script>
   <script type="text/javascript" src="./js/main.js"></script>
+  <script type="text/javascript" src="./js/progressbar.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/buttons.css">
 
 
   <!--[if lt IE 9]>
@@ -22,36 +24,116 @@
   <![endif]-->
 </head>
 <body>
-  <div class="intro parallax-window" data-parallax="scroll" data-image-src="http://bryanorozco.com/images/test-bg.jpg">
+  <div class="intro parallax-window" data-parallax="scroll" data-image-src="./images/bryan-blur-bg.png">
     <div class="logo">
-      <img  src="http://bryanorozco.com/images/bryan_orozco-5.png" width="200"></img>
+      <img  src="http://bryanorozco.com/images/bryan_orozco-4.png"></img>
       <!--<span>Made In GDL!! <i class="fa fa-heart" aria-hidden="true"></i></span>-->
     </div>
   </div>
-  <section class="quote">
-    <i class="fa fa-quote-left" aria-hidden="true"></i>
-    <div class="quote-text">
-      <ul id="text">
-        <li>El pasado esta escrito en la memoria y el futuro presente en el deseo</li>
-        <li>The past is written in the memory and present future desire</li>
-    </ul>
-      <span class="quote-author"> - Carlos Fuentes</span>
-    </div>
-    <div class="quote-text-trans">The past is written in memory and present in the future desire</div>
+  <section class="quote white">
+    <div class="inner">
+      <i class="fa fa-quote-left" aria-hidden="true"></i>
+      <div class="quote-text">
+        <ul id="text">
+          <li>El pasado esta escrito en la memoria y el futuro presente en el deseo</li>
+          <li>The past is written in our memory and the future in present desire</li>
+      </ul>
+        <span class="quote-author"> - Carlos Fuentes</span>
+      </div>
+      <div class="quote-text-trans">The past is written in memory and present in the future desire</div>
+    <div>
   </section>
-  <section class="about-me">
-    <div class="profile-img">
-      <img src="http://bryanorozco.com/images/bryan.jpg" width="250">
+  <section class="about-me red">
+    <div class="inner">
+      <h1 style="text-align:center;">About Me</h1>
+      <div class="am-inner">
+        <div class="profile-img">
+          <img src="http://bryanorozco.com/images/bryan_orozco-7.jpg">
+        </div>
+        <div class="profile-content">
+          <h2>My name Is Bryan Orozco<br/> I'm a <span class="special-word">developer</span> with<br/> a passion for <span class="special-word">innovation</span>.</h2>
+          <a class="button button--wayra button--border-thick button--text-upper button--size-s">DOWNLOAD MY RESUME</a>
+        </div>
+      </div>
     </div>
-    <div class="profile-content">
-      <h1>My name Is Bryan Orozco I am a developer with a passion for inovation.</h1>
+  </section>
+  <section class="time-line white">
+    <div class="inner">
+      <h1 class="tl-heading">Time Line</h1>
+        <div class="tl-inner">
+          <div class="time">
+            1996
+          </div>
+          <div class="tl-line-short"></div>
+          <div class="time-desc">
+            <p>On April 19 I was born in the beautiful city of Guadalajara</p>
+          </div>
+          <div class="tl-line"></div>
+          <div class="time">
+            2011
+          </div>
+          <div class="tl-line-short"></div>
+          <div class="time-desc">
+            <p>With nothing but backpacks and without speaking English my family decided<br/> to move to the United States</p>
+          </div>
+          <div class="tl-line"></div>
+          <div class="time">
+            2014
+          </div>
+          <div class="tl-line-short"></div>
+          <div class="time-desc">
+            <p>Graduated from Corona High School while working <br />as a dishwasher and later working at a frozen yogurt store</p>
+          </div>
+          <div class="tl-line"></div>
+          <div class="time">
+            2014
+          </div>
+          <div class="tl-line-short"></div>
+          <div class="time-desc">
+            <p>Enrolled at Norco College. Started learning how to code through codecademy.com and lynda.com</p>
+          </div>
+          <div class="tl-line"></div>
+          <div class="time">
+            2015
+          </div>
+          <div class="tl-line-short"></div>
+          <div class="time-desc">
+            <p>Got a web developer internship at <a style="color:#f37022;" href="http://www.plainjoe.net" target="_blank">PlainJoe Studios</a></p>
+          </div>
+          <div class="tl-line"></div>
+          <div class="time">
+            2016
+          </div>
+          <div class="tl-line-short"></div>
+          <div class="time-desc">
+            <p>Promoted to Jr Web Developer</p>
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="skills red">
+    <div class="inner">
+      <div class="section-heading">
+        <h1>Skills</h1>
+      </div>
+      <div class="skills-inner">
+        <div class="skill-1"></div>
+        <div class="skill-2"></div>
+        <div class="skill-3"></div>
+        <div class="skill-4"></div>
+        <div class="skill-5"></div>
+      </div>
     </div>
-    <div class="countries">
-      <div class="mex">
-        <img src="http://bryanorozco.com/images/mex-bg.png">
+  </section>
+  <section class="contact white">
+    <div class="inner">
+      <div class="section-heading">
+        <h1>Contact</h1>
+      </div>
+      <h2>Always looking foward to meeting new people</h2>
+      <a class="button button--wayra button--border-thick button--text-upper button--size-s" href="mailto:me@bryanorozco.com">EMAIL ME</a>
+      <div class="social-section">
 
-      </div><div class="usa">
-        <img src="http://bryanorozco.com/images/usa-bg.png">
       </div>
     </div>
   </section>
@@ -61,10 +143,16 @@
   <div class="menu-container">
     <ul class="menu">
       <li>
-        <a href="javascript:;">Story</a>
+        <a class="menu-item" href="javascript:;" data-section="about-me">About Me</a>
       </li>
       <li>
-        <a href="javascript:;">Contact Me</a>
+        <a class="menu-item" href="javascript:;" data-section="time-line">Time Line</a>
+      </li>
+      <li>
+        <a class="menu-item" href="javascript:;" data-section="skills">Skills</a>
+      </li>
+      <li>
+        <a class="menu-item" href="javascript:;" data-section="contact">Contact</a>
       </li>
     </ul>
   </div>

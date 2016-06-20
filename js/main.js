@@ -1,10 +1,6 @@
 $(document).ready(function() {
 
-
-    setTimeout(function(){
-  $('.down-arrow').addClass('bounce');
-}, 3000);
-
+//Menu
     $('.c-hamburger').click(function(){
     	if($(this).hasClass('is-active')){
     		$(this).removeClass('is-active');
@@ -15,12 +11,28 @@ $(document).ready(function() {
     	}
     });
 
+    $('.menu-item').click(function(){
+      var srollTo = $(this).data('section');
+      console.log(srollTo);
+      $('body').animate({
+         scrollTop: $("."+srollTo+"").offset().top
+      });
+    });
+
+    $('body').click(function(evt){
+         if($(evt.target).closest('.menu-container, .c-hamburger').length)
+            return;
+  	   $('.c-hamburger').removeClass('is-active');
+       $('.menu-container').slideUp();
+  	});
+
     //Set the intro image to full height
     var window_height = $(window).height();
     $('.intro').css('height', window_height);
 
 
     //Animate text
+
     $.fn.ticker = function( options ) {
 
     options = $.extend({
@@ -100,5 +112,36 @@ $(document).ready(function() {
 $('.quote-text > #text').ticker();
 
 //Is element in view pointer
+var didChange = false;
+var introDiv = $('.intro').height();
+introDiv = introDiv - 70;
+$(window).scroll(function (event) {
+    var scroll = $(window).scrollTop();
+    if(scroll > introDiv && scroll < introDiv + 25 && didChange == false){
+
+      didChange = true;
+      $( "#text" ).trigger( "click" );
+
+    }
+});
+
+//skills
+var bar1 = new ProgressBar.Circle('.skill-1', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'HTML' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
+var bar2 = new ProgressBar.Circle('.skill-2', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'CSS' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
+var bar3 = new ProgressBar.Circle('.skill-3', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'PHP' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
+var bar4 = new ProgressBar.Circle('.skill-4', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'IOS' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
+var bar5 = new ProgressBar.Circle('.skill-5', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'JAVA' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
+$(document).on('scroll', function() {
+  var skillSection = $('.skills').position().top
+  skillSection = skillSection - 400;
+    if($(this).scrollTop()>=skillSection){
+        bar1.animate(0.9);
+        bar2.animate(0.9);
+        bar3.animate(0.8);
+        bar4.animate(0.6);
+        bar5.animate(0.5);
+    }
+});
+
 
 });
