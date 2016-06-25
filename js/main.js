@@ -125,6 +125,36 @@ $(window).scroll(function (event) {
     }
 });
 
+$(".tl-aside").stick_in_parent();
+
+var showTimeLine = false;
+var child = 1;
+$(document).on('scroll', function(){
+  //var time_line = $('.time-line').position().top;
+
+  var time_line_item = $('.tl-item:nth-child('+ child +')');
+   if(child <= 6){
+  var time_line_item_position = time_line_item.position().top - 250;
+  }
+  var ti_height = time_line_item.height();
+	if(child > 6 ){
+	showTimeLine = true;
+	}
+  if($(this).scrollTop()>=time_line_item_position && showTimeLine == false){
+    $('.tl-item:nth-child('+ child +')').find('.tl-line-short').animate({height: 24},200);
+    $('.tl-item:nth-child('+ child +')').find('.tl-line').animate({height: 50},200);
+    $('.tl-item:nth-child('+ child +')').find('.time-desc').addClass('active');
+    $('.tl-item:nth-child('+ child +')').find('.time').addClass('active');
+
+    if(child <= 6){
+      console.log('here '+ child);
+      child++;
+    }
+  }
+  //showTimeLine = false;
+});
+
+
 //skills
 var bar1 = new ProgressBar.Circle('.skill-1', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'HTML' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
 var bar2 = new ProgressBar.Circle('.skill-2', { strokeWidth: 6, easing: 'easeInOut', duration: 1400, text: { value: 'CSS' }, color: '#fff', trailColor: '#eee', trailWidth: 1, svgStyle: null});
@@ -143,5 +173,17 @@ $(document).on('scroll', function() {
     }
 });
 
+//Social
+
 
 });
+
+function closeSnapCode(){
+	$('.snap-overlay').fadeOut();
+	$('.snap-overlay').removeClass('active');
+}
+
+function showSnapCode(){
+	$('.snap-overlay').fadeIn();
+	$('.snap-overlay').addClass('active');
+}
