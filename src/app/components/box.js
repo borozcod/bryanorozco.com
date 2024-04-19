@@ -57,7 +57,7 @@ const Box = () => {
 
   return (
     <div className="h5">
-      <Canvas dpr={Math.max(window.devicePixelRatio, 2)}>
+      <Canvas>
         <Box/>
       </Canvas>
     </div>
