@@ -1,8 +1,18 @@
+/* tachyons variables */
+:root {
+  --yellow: #FCA311 !important;
+}
+
+
 * {
   font-family: "K2D", sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+input:focus {
+  outline: none;
 }
 
 body,
@@ -37,5 +47,5 @@ p {
 
 .dark-gray { color: #495057;}
 
-.gold { color: #FFB700 }
+.gold { color: var(--yellow) }
 .bg-washed-blue { background-color: #F6FFFE }

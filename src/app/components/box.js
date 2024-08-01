@@ -61,7 +61,5 @@ const Box = () => {
         <Box/>
       </Canvas>
     </div>
-
-    
   )
 }
