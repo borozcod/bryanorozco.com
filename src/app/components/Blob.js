@@ -33,7 +33,6 @@ const Blob = () => {
     <>
       <Canvas camera={{ position: [0, 0, 2], fov: 75 }}  >
         <ambientLight intensity={3} />
-        <OrbitControls />
         <Blob />
       </Canvas>
     </>
