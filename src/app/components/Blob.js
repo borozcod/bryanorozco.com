@@ -8,63 +8,34 @@ import { MeshDistortMaterial } from '@react-three/drei'
 
 export function Blob(props) {
 
-  const { distort, speed, sphereRadius, sphereSegments } = useControls({ 
-      distort: {
-        value: 1,
-        min: 0,
-        max: 100,
-        step: 0.1,
-    },
-      speed: {
-        value: 1,
-        min: 1,
-        max: 100,
-        step: 1,
-    },
-      sphereRadius: {
-        value: 1,
-        min: 1,
-        max: 100,
-        step: 1,
-    },
-      sphereSegments: {
-        value: 40,
-        min: 0,
-        max: 100,
-        step: 1,
-    }
-  })
-
 const Blob = () => {
   const meshRef = useRef();
 
-  const geometry = new THREE.SphereGeometry( sphereRadius, sphereSegments, sphereSegments ); 
+  const geometry = new THREE.CircleGeometry( 1, 100 ); 
   const materialRef = new THREE.ShaderMaterial({
     uniforms: {
       u_time: { value: 0 }
-    },
-    wireframe: false // For debugging, can be removed
+    }
   });
-
   
   useFrame(({clock}) => {
       materialRef.uniforms.u_time.value = clock.getElapsedTime();
   });
   
   return (
-    <mesh ref={meshRef} geometry={geometry} material={materialRef}>
-        <MeshDistortMaterial color={0xffb700} distort={distort} speed={speed} />
-    </mesh>
-  );
-};
+      <mesh position={[0,0,0]} ref={meshRef} geometry={geometry} material={materialRef}>
+          <MeshDistortMaterial transparent={true} opacity={0.5}  color={0xFCA311} distort={0.6} speed={0.5} />
+      </mesh>
+    );
+  };
 
   return (
-    <div className="h6" style={{height: "600px"}}>
-      <Canvas>
+    <>
+      <Canvas camera={{ position: [0, 0, 2], fov: 75 }}  >
         <ambientLight intensity={3} />
-        <OrbitControls /> 
-        <Blob/>
+        <OrbitControls />
+        <Blob />
       </Canvas>
-    </div>
+    </>
   )
 }
