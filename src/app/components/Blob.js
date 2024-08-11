@@ -1,65 +1,68 @@
 "use client";
-import React from 'react'
-import { Canvas } from '@react-three/fiber'
+import React, { useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
 import * as THREE from "three";
+import { useControls } from 'leva'
+import { MeshDistortMaterial } from '@react-three/drei'
 
 export function Blob(props) {
 
-const vertexShader = `
-    uniform float u_time;
-    uniform float u_off;
-    varying vec2 vUv;
-    varying float vDisplacement;
-
-    void main() {
-      vUv = uv;
-      vec3 pos = position;
-      float noise = sin(pos.x * 10.0 + u_time) * 0.5 + 0.5;
-      pos.z += noise * 2.0;
-      vDisplacement = noise;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-    }
-`;
-
-const fragmentShader = `
-  uniform float u_time;
-    varying vec2 vUv;
-    varying float vDisplacement;
-
-    void main() {
-      vec3 color = vec3(0.0, 0.0, 1.0);
-      color = mix(color, vec3(1.0, 0.0, 0.0), vDisplacement);
-      gl_FragColor = vec4(color, 1.0);
-    }
-`;
-const Blob = () => {
-  
-  // Create the Box geometry
-  const geometry = new THREE.SphereGeometry(1, 64, 64);
-  // Create the shader material
-//   const material = new THREE.ShaderMaterial({
-//     vertexShader,
-//     fragmentShader,
-//   });
-
-  const material = new THREE.ShaderMaterial({
-    vertexShader,
-    fragmentShader,
-    uniforms: {
-      u_time: { value: 0.5 }
+  const { distort, speed, sphereRadius, sphereSegments } = useControls({ 
+      distort: {
+        value: 1,
+        min: 0,
+        max: 100,
+        step: 0.1,
     },
-    wireframe: true // For debugging, can be removed
+      speed: {
+        value: 1,
+        min: 1,
+        max: 100,
+        step: 1,
+    },
+      sphereRadius: {
+        value: 1,
+        min: 1,
+        max: 100,
+        step: 1,
+    },
+      sphereSegments: {
+        value: 40,
+        min: 0,
+        max: 100,
+        step: 1,
+    }
+  })
+
+const Blob = () => {
+  const meshRef = useRef();
+
+  const geometry = new THREE.SphereGeometry( sphereRadius, sphereSegments, sphereSegments ); 
+  const materialRef = new THREE.ShaderMaterial({
+    uniforms: {
+      u_time: { value: 0 }
+    },
+    wireframe: false // For debugging, can be removed
   });
 
+  
+  useFrame(({clock}) => {
+      materialRef.uniforms.u_time.value = clock.getElapsedTime();
+  });
+  
   return (
-    <mesh geometry={geometry} material={material}>
+    <mesh ref={meshRef} geometry={geometry} material={materialRef}>
+        <MeshDistortMaterial color={0xffb700} distort={distort} speed={speed} />
     </mesh>
   );
 };
 
   return (
-    <div className="h5">
+    <div className="h6" style={{height: "600px"}}>
       <Canvas>
+        <ambientLight intensity={3} />
+        <OrbitControls /> 
         <Blob/>
       </Canvas>
     </div>
