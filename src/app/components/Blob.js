@@ -79,37 +79,42 @@ extend({ ImagePixelMaterial, BlobMaterial });
 export function LiveBlob(props) {
 
   const Image = ({darkTexture, darkRenderTarget}) =>  {
+    const imageProjectionRef = useRef();
     const blobRef = useRef();
     const imageRef = useRef();
     const { viewport } = useThree();
 
     const texture = useLoader(THREE.TextureLoader, "/turtle.png");
     const { gl } = useThree();
-
-    // const handleClick = () => {
-    //   if (imageRef.current) {
-    //     //blobRef.current.uniforms.uTexture.value = imageRef.current.uniforms.uTexture.value;
-    //   }
-    // };
-
-    useFrame(({ clock }) => {
-      
-      if (blobRef.current) {
-        blobRef.current.uniforms.uTime.value = clock.getElapsedTime();  
-        console.log(blobRef.current.uniforms.uTime.value);
+    const materialRef = new THREE.ShaderMaterial({
+      uniforms: {
+        u_time: { value: 0 }
       }
     });
 
+    useFrame(({ clock }) => {
+      
+      if (imageProjectionRef.current) {
+        imageProjectionRef.current.uniforms.uTime.value = clock.getElapsedTime();  
+      }
+      materialRef.uniforms.u_time.value = clock.getElapsedTime();
+
+    });
+
     const geometry = new THREE.CircleGeometry( 1, 100 ); 
+    const blobGeometry = new THREE.CircleGeometry( 1, 100 ); 
 
     return (
       <>
+        {/* <mesh position={[0,0,0.5]} ref={blobRef} geometry={blobGeometry} material={materialRef}>
+            <MeshDistortMaterial transparent={true} opacity={0.5} color={0xFCA311} distort={0.6} speed={0.5} />
+        </mesh> */}
         <mesh position={[0,0,0.3]}>
           <planeGeometry attach="geometry" args={[3, 3]} />
           <imagePixelMaterial ref={imageRef} uTexture={texture} transparent={true} opacity={0.5} />
         </mesh>
         <mesh position={[0,0,0]} geometry={geometry} >
-            {/* <blobMaterial ref={blobRef} /> */}
+            <blobMaterial ref={imageProjectionRef} />
         </mesh>
       </>
     )
