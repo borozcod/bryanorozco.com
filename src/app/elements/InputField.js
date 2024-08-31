@@ -10,7 +10,7 @@ const InputField = ({ label, placeholder, type = 'text' }) => {
   };
 
   return (
-    <>
+    <div className='pa2'>
     <div className='mb3'>
         <button className='fw2 link bg-animate hover-white hover-bg-gold bg-transparent br-pill bg-none pv2 ph3 gold b--gold bw1 ba ph3 mr3'>a turtle</button>
         <button className='fw2 link bg-animate hover-white hover-bg-gold bg-transparent br-pill bg-none pv2 ph3 gold b--gold bw1 ba ph3 '>a cat</button>
@@ -27,7 +27,7 @@ const InputField = ({ label, placeholder, type = 'text' }) => {
             className='input-reset br3 br--right bw1 ba b--gold pv2 ph3'
         />
     </div>
-    </>
+    </div>
   );
 };
 

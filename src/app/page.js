@@ -1,4 +1,4 @@
-import { Blob } from './components/Blob'
+import { LiveBlob } from './components/Blob'
 import InputField from './elements/InputField'
 import 'tachyons/css/tachyons.min.css';
 import "./globals.css";
@@ -18,7 +18,7 @@ export default function Home() {
           <InputField/>
         </div>
         <div className="aspect-ratio--object z-0">
-            <Blob />
+            <LiveBlob />
         </div>
     </main>
   );
