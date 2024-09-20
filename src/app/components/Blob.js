@@ -7,6 +7,7 @@ import gsap from 'gsap'
 import { MeshDistortMaterial } from '@react-three/drei'
 import {getDALLEImage} from './../../openaiService.js'
 import { InputField } from './../elements/InputField.js'
+import { catBlob } from "./blobs/cat.js"
 
 const ImagePixelMaterial = shaderMaterial(
   {  uTexture: null, uMouse: new THREE.Vector2() },
@@ -85,11 +86,9 @@ export function LiveBlob({ base64Data }) {
     const blobRef = useRef();
     const imageRef = useRef();
     const [hovered, setHovered] = useState(false);
-    if (!base64Data){
-      return <></>
-    }
 
-    const texture = useLoader(THREE.TextureLoader, "data:image/png;base64," + base64Data);
+
+    const texture = useLoader(THREE.TextureLoader, "data:image/png;base64," + (base64Data ? base64Data :  catBlob));
 
     const blobMaterial = new THREE.ShaderMaterial({
       uniforms: {
