@@ -1,9 +1,25 @@
+"use client"
+import { useState } from 'react';
 import { LiveBlob } from './components/Blob'
 import InputField from './elements/InputField'
 import 'tachyons/css/tachyons.min.css';
 import "./globals.css";
-
+import {getDALLEImage} from './../openaiService.js'
+import { catBlob } from './components/blobs/cat'
 export default function Home() {
+  const [base64Data, setBase64Data] = useState('');
+
+  const generateImage = async (prompt) => {
+    try {
+      // Call getDALLEImage to fetch the base64 image
+      const base64Image = await getDALLEImage(prompt);
+      // console.log(base64Image)
+      setBase64Data(base64Image); // Set the base64 data to be passed to LiveBlob
+    } catch (error) {
+      console.error('Error generating image:', error);
+    }
+  };
+
   return (
     <main>
         <div className="mw9 center ph3-ns relative z-1">
@@ -15,10 +31,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <InputField/>
+          <InputField generateImage={generateImage} />
         </div>
         <div className="aspect-ratio--object z-0">
-            <LiveBlob />
+            <LiveBlob base64Data={base64Data}/>
         </div>
     </main>
   );

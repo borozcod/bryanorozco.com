@@ -2,11 +2,15 @@
 "use client";
 import React, { useState } from 'react';
 
-const InputField = ({ label, placeholder, type = 'text' }) => {
+const InputField = ({ label, placeholder, type = 'text', generateImage }) => {
   const [value, setValue] = useState('');
 
   const handleChange = (e) => {
     setValue(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    generateImage(value);
   };
 
   return (
@@ -27,6 +31,12 @@ const InputField = ({ label, placeholder, type = 'text' }) => {
             className='input-reset br3 br--right bw1 ba b--gold pv2 ph3'
         />
     </div>
+    <button
+        onClick={handleButtonClick}
+        className="fw2 link bg-animate hover-white hover-bg-gold bg-transparent br-pill bg-none pv2 ph3 gold b--gold bw1 ba mt3"
+      >
+        Generate Image
+      </button>
     </div>
   );
 };
