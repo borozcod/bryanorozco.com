@@ -7,7 +7,7 @@ import "./globals.css";
 import { getDALLEImage } from './../openaiService.js'
 export default function Home() {
   const [base64Data, setBase64Data] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const generateImage = async (prompt) => {
     try {
@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <main>
-          <div className="ph2-ns">
+          <div className="ph2-ns mw8">
             <div className="fl w-50-ns pa2">
               <div className="cf ph2-ns">
                   <div className="pv4">
@@ -33,7 +33,7 @@ export default function Home() {
               </div>
             </div>
             <div className="fl w-100 w-50-ns pa2">
-            <div style={{ width: "100vw", height: "70vh" }}>
+            <div className='vw-100 vh-50'>
               <LiveBlob base64Data={base64Data} loading={loading}/>
               </div>
             </div>
