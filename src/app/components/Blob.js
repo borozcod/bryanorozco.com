@@ -3,12 +3,10 @@ import React, { useRef, forwardRef, useEffect } from 'react';
 import { Canvas, useFrame, useLoader, extend } from '@react-three/fiber';
 import { OrbitControls, shaderMaterial } from '@react-three/drei';
 import * as THREE from 'three';
-import { catBlob } from './blobs/cat.js';
 import { noise } from './shaders/noise.js';
-import { gsap } from 'gsap';
 
 const BlobMaterial = shaderMaterial(
-  { uTexture: null, uTime: 0, uHover: 0, uMouse: [0, 0], uLoad: true, uIntensity: 0.0 },
+  { uTexture: null, uTime: 0, uHover: 0, uMouse: [0, 0], uLoad: true, uIntensity: 0.3 },
   noise + `
   varying vec2 vUv;
   uniform float uTime;
@@ -58,13 +56,11 @@ const BlobMaterial = shaderMaterial(
 );
 
 extend({ BlobMaterial });
-export const LiveBlob = forwardRef(({ base64Data }, ref) => {
+export const LiveBlob = forwardRef((props, ref) => {
   const AIImage = () => {
 
     const geometry = new THREE.CircleGeometry(1, 500);
-    
-    const texture = useLoader(THREE.TextureLoader, (base64Data ? base64Data : catBlob));
-
+ 
     useFrame(({ clock }) => {
       if (ref.current) {
         ref.current.uniforms.uTime.value = clock.getElapsedTime();
@@ -74,7 +70,7 @@ export const LiveBlob = forwardRef(({ base64Data }, ref) => {
     return (
       <>
         <mesh position={[0, 0, 0]} geometry={geometry} >
-          <blobMaterial ref={ref} uTexture={texture} transparent />
+          <blobMaterial ref={ref} transparent />
         </mesh>
       </>
     );
@@ -90,6 +86,3 @@ export const LiveBlob = forwardRef(({ base64Data }, ref) => {
     </>
   );
 });
-
-// Add the displayName for easier debugging
-LiveBlob.displayName = "LiveBlob";

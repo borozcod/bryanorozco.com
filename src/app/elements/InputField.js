@@ -2,23 +2,25 @@
 "use client";
 import React, { useState } from 'react';
 
-const InputField = ({ type = 'text', generateImage, loading }) => {
+const InputField = ({ type = 'text', generateImage }) => {
   const [value, setValue] = useState('');
+  const [loading, setLoading] = useState('');
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
   const generateNewImage = () => {
-    generateImage(value);
+    setLoading(true)
+    generateImage(value, ()=> {
+      setLoading(false)
+    });
   };
 
   return (
     <div className='pa2'>
       <div className='flex items-stretch'>
-          <button className='button-reset br3 br--left input-reset white bg-gold bn ph3 '>
-              <i className="fas fa-star-of-life"></i> turn into
-          </button>
+          <button className='button-reset br3 br--left input-reset white bg-gold bn ph3 '>turn into</button>
           <input
               type={type}
               placeholder="| a cat jumpping in space"
