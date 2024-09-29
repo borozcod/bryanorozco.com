@@ -86,3 +86,4 @@ export const LiveBlob = forwardRef((props, ref) => {
     </>
   );
 });
+LiveBlob.displayName = "LiveBlob";
