@@ -1,5 +1,5 @@
 "use client"
-import { useState, useRef, useEffect } from 'react';
+import {  useRef } from 'react';
 import { LiveBlob } from './components/Blob'
 import InputField from './elements/InputField'
 import 'tachyons/css/tachyons.min.css';
@@ -12,9 +12,7 @@ export default function Home() {
   
   const blobRef = useRef(null);
   const generateImage = async (prompt, cb) => {
-    
     try {
-      
       gsap.to(blobRef.current.uniforms.uIntensity, {
         duration: 2,
         value: 1.0,
@@ -31,7 +29,11 @@ export default function Home() {
             onStart: () => {
               blobRef.current.uniforms.uTexture.value =  texture;
             },
-            onComplete: () => {cb()}
+            onComplete: () => {
+              if(cb){
+                cb()
+              }
+            }
           });
         }
       });
@@ -43,20 +45,18 @@ export default function Home() {
 
   return (
     <main>
-          <div className="ph2-ns mw8">
-            <div className="fl w-50-ns pa2">
-              <div className="cf ph2-ns">
-                  <div className="pv4">
+          <div className="ma3">
+            <div className="relative z-1">
+              <div>
+                  <div className="mb2">
                     <h1 className="gold">Hola</h1>
-                    <p>I’m Bryan Orozco, a Software Developer based out of Los Angeles California. </p>
+                    <p>I’m Bryan Orozco, a Software Developer based out of Los Angeles California.</p>
                   </div>
-                  <InputField generateImage={generateImage} />
               </div>
+                  <i className="fa-solid fa-bolt"></i><InputField generateImage={generateImage} />
             </div>
-            <div className="fl w-100 w-50-ns pa2">
-              <div className='vw-100 vh-50'>
+            <div className="absolute-ns absolute--fill vh-75 h-100-ns w-100-ns z-0">
                 <LiveBlob ref={blobRef} />
-              </div>
             </div>
           </div>
     </main>

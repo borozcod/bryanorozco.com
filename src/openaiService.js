@@ -5,9 +5,12 @@ const openai = new OpenAI({
 });
 
 export const getDALLEImage = async (prompt) => {
+    if(!prompt){
+        return
+    }
     const image = await openai.images.generate({ 
         model: 'dall-e-3',
-        prompt: "In minimalist line, art style give me a" + prompt,
+        prompt: "In minimalist line, art style give me " + prompt,
         n: 1,   
         size: '1024x1024',
         response_format: "b64_json"

@@ -1,8 +1,10 @@
 // InputField.js
 "use client";
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBolt } from '@fortawesome/free-solid-svg-icons'
 
-const InputField = ({ type = 'text', generateImage }) => {
+const InputField = ({ generateImage }) => {
   const [value, setValue] = useState('');
   const [loading, setLoading] = useState('');
 
@@ -11,18 +13,22 @@ const InputField = ({ type = 'text', generateImage }) => {
   };
 
   const generateNewImage = () => {
+    if(!value) {
+      return
+    }
     setLoading(true)
     generateImage(value, ()=> {
       setLoading(false)
     });
   };
 
+
   return (
-    <div className='pa2'>
+    <div>
       <div className='flex items-stretch'>
-          <button className='button-reset br3 br--left input-reset white bg-gold bn ph3 '>turn into</button>
+          <button onClick={generateNewImage} className='f6 f5-ns button-reset br3 br--left input-reset white bg-gold bn ph3 '> <FontAwesomeIcon className="white mr2" icon={faBolt} />turn into</button>
           <input
-              type={type}
+              type="text"
               placeholder="| a cat jumpping in space"
               value={value}
               onChange={handleChange}

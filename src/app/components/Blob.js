@@ -19,10 +19,8 @@ const BlobMaterial = shaderMaterial(
   void main() {
     vUv = uv;
     vec3 newPosition = position;
-    //if(uLoad) {
-      vDisplacement = cnoise(position + vec3(2.0 * uTime));
-      newPosition = position + normal * (uIntensity * vDisplacement);
-    //}
+    vDisplacement = cnoise(position + vec3(2.0 * uTime));
+    newPosition = position + normal * (uIntensity * vDisplacement);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
   }
   `,
